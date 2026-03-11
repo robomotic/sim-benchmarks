@@ -383,16 +383,7 @@ graph TD
 - 📦 **Cluster 3× Mac Minis** = ~200K steps/s for ~$1,800 (beats single M4 Max)
 - 🎯 **M4 Max still best** for single-machine development and fast iteration
 
-## Performance Notes (Legacy) (Legacy)
-
-### Apple M4 Max Results
-
-**Hardware:**
-- Device: Apple M4 Max
-- Memory: 36 GB
-- Backend: Metal (JAX), CPU (MJX)
-
-**Humanoid Benchmark (128 parallel rollouts):**
+## Running Benchmarks
 - JIT compilation: ~3.3s
 - Simulation time: ~0.11s for 100 steps
 - Throughput: ~114,000 steps/second
