@@ -1,0 +1,28 @@
+========================================
+MJX Official Benchmark
+Started: 2026-03-11 08:30:18
+Model: pendula.xml
+Steps: 500
+Batch size: 512
+Solver: cg
+XLA_FLAGS: --xla_backend_extra_options=xla_cpu_disable_new_fusion_emitters=true
+MUJOCO_MJX_DISABLE_WARP: 1
+========================================
+
+W0311 08:30:19.226338 1671778 cpp_gen_intrinsics.cc:74] Empty bitcode string provided for eigen. Optimizations relying on this IR will be disabled.
+Failed to import warp: No module named 'warp'
+Failed to import mujoco_warp: No module named 'warp'
+Rolling out 500 steps at dt = 0.020...
+
+Summary for 512 parallel rollouts
+
+ Total JIT time: 4.62 s
+ Total simulation time: 1.72 s
+ Total steps per second: 148741
+ Total realtime factor: 2974.83 x
+ Total time per step: 6.72 µs
+
+========================================
+Finished: 2026-03-11 08:30:25
+Exit code: 0
+========================================

@@ -1,0 +1,30 @@
+========================================
+MJX Speed Benchmark
+Started: 2026-03-11 08:20:39
+XLA_FLAGS: --xla_backend_extra_options=xla_cpu_disable_new_fusion_emitters=true
+========================================
+
+Platform 'METAL' is experimental and not all JAX functionality may be correctly supported!
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1773217240.669156 1647810 mps_client.cc:510] WARNING: JAX Apple GPU support is experimental and not all JAX functionality is correctly supported!
+Metal device set to: Apple M4 Max
+I0000 00:00:1773217240.689016 1647810 service.cc:145] XLA service 0xb6c262e00 initialized for platform METAL (this does not guarantee that XLA will be used). Devices:
+I0000 00:00:1773217240.689234 1647810 service.cc:153]   StreamExecutor device (0): Metal, <undefined>
+I0000 00:00:1773217240.690383 1647810 mps_client.cc:406] Using Simple allocator.
+I0000 00:00:1773217240.690390 1647810 mps_client.cc:384] XLA backend will use up to 30150197248 bytes on device 0 for SimpleAllocator.
+Failed to import warp: No module named 'warp'
+Failed to import mujoco_warp: No module named 'warp'
+Running benchmark with 9 bodies, 17 geoms, 8 sites on METAL
+Compiled.
+Time for 3 iterations: 0.0010s
+Avg time: 0.3327ms
+I0000 00:00:1773217242.231625 1647810 mps_client.h:209] MetalClient destroyed.
+
+systemMemory: 36.00 GB
+maxCacheSize: 14.04 GB
+
+
+========================================
+Finished: 2026-03-11 08:20:42
+Exit code: 0
+========================================
