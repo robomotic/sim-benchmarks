@@ -94,48 +94,6 @@ flowchart LR
     style N fill:#87CEEB
 ```
 
-### ASCII Architecture Diagram (for text viewing)
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                    MuJoCo MJX                           │
-│              (mujoco-mjx package)                       │
-└──────────────────┬──────────────────┬───────────────────┘
-                   │                  │
-                   ▼                  ▼
-    ┌──────────────────────┐  ┌──────────────────────┐
-    │   JAX Implementation │  │  WARP Implementation │
-    │      (default)       │  │     (optional)       │
-    └──────────┬───────────┘  └─────────┬────────────┘
-               │                        │
-               ▼                        ▼
-    ┌──────────────────────┐  ┌──────────────────────┐
-    │        JAX           │  │    warp-lang         │
-    │   (NumPy-like API)   │  │  (GPU kernel lib)    │
-    └──────────┬───────────┘  └─────────┬────────────┘
-               │                        │
-               ▼                        │
-    ┌──────────────────────┐           │
-    │        XLA           │           │
-    │  (compiler backend)  │           │
-    └──────────┬───────────┘           │
-               │                        │
-     ┌─────────┴─────────┬──────────┐  │
-     ▼                   ▼          ▼  ▼
-┌─────────┐      ┌──────────┐  ┌──────────┐
-│   CPU   │      │ CUDA GPU │  │ CUDA GPU │
-│ (all)   │      │ (NVIDIA) │  │ (NVIDIA) │
-└─────────┘      └──────────┘  └──────────┘
-     ▲                 ▲
-     │                 │
-┌─────────┐      ┌──────────┐
-│  Metal  │      │   TPU    │
-│ (Apple) │      │ (Google) │
-└─────────┘      └──────────┘
-   ⚠️              ✅
- (partial)       (full)
-```
-
 ## Backend Implementations
 
 ### JAX Implementation (Default)
@@ -163,6 +121,8 @@ The WARP implementation is an optional backend optimized for GPU workloads using
 
 **Dependencies:**
 - warp-lang: GPU kernel library and runtime
+
+Not supported on MACOS.
 
 ## Device Support Matrix
 
@@ -206,34 +166,6 @@ XLA (Accelerated Linear Algebra) is the compiler backend used by JAX to generate
 
 ### XLA Backend Support Matrix
 
-```mermaid
-%%{init: {'theme':'base'}}%%
-graph LR
-    XLA[XLA Compiler Backend]
-
-    XLA --> CPU["CPU Backend<br/>✅ Full Support<br/>All Platforms"]
-    XLA --> CUDA["CUDA Backend<br/>✅ Full Support<br/>NVIDIA GPUs"]
-    XLA --> TPU["TPU Backend<br/>✅ Full Support<br/>Google TPUs"]
-    XLA --> METAL["Metal Backend<br/>⚠️ Incomplete<br/>Apple GPUs"]
-
-    CPU --> CPU_OK["✅ Production Ready"]
-    CUDA --> CUDA_OK["✅ Production Ready"]
-    TPU --> TPU_OK["✅ Production Ready"]
-    METAL --> METAL_ISSUE["❌ mhlo.reduce<br/>not legalized"]
-
-    METAL_ISSUE --> WORKAROUND["🔧 Workaround:<br/>Force CPU Device"]
-
-    style XLA fill:#4682B4,stroke:#000080,stroke-width:3px,color:#fff
-    style CPU fill:#90EE90,stroke:#006400,stroke-width:2px
-    style CUDA fill:#90EE90,stroke:#006400,stroke-width:2px
-    style TPU fill:#90EE90,stroke:#006400,stroke-width:2px
-    style METAL fill:#FFD700,stroke:#FF8C00,stroke-width:2px
-    style CPU_OK fill:#98FB98,stroke:#00FF00,stroke-width:2px
-    style CUDA_OK fill:#98FB98,stroke:#00FF00,stroke-width:2px
-    style TPU_OK fill:#98FB98,stroke:#00FF00,stroke-width:2px
-    style METAL_ISSUE fill:#FFB6C1,stroke:#DC143C,stroke-width:2px
-    style WORKAROUND fill:#87CEEB,stroke:#4682B4,stroke-width:2px
-```
 
 | Backend | Platform | Status | Notes |
 |---------|----------|--------|-------|
@@ -245,44 +177,6 @@ graph LR
 ### Metal XLA Limitation
 
 The Metal XLA backend has incomplete operation support that prevents MJX from running on Apple GPUs:
-
-```mermaid
-flowchart TD
-    A[MJX Physics Simulation] --> B[Composite Rigid Body Calculations]
-    B --> C[smooth.py:307]
-    C --> D["jp.take(crb_body, <br/>jp.array(m.dof_bodyid), <br/>axis=0)"]
-    D --> E[JAX Operation]
-    E --> F[XLA Compilation]
-    F --> G{Metal Backend<br/>Legalization}
-
-    G -->|CPU Backend| H[✅ mhlo.reduce<br/>Supported]
-    G -->|CUDA Backend| I[✅ mhlo.reduce<br/>Supported]
-    G -->|Metal Backend| J[❌ mhlo.reduce<br/>Not Legalized]
-
-    H --> K[Successful Execution]
-    I --> K
-    J --> L["❌ ValueError:<br/>Unsupported device: METAL:0"]
-
-    L --> M[Workaround Required]
-    M --> N["Force CPU Device:<br/>jax.devices('cpu')[0]"]
-    N --> O[✅ CPU Execution]
-
-    style A fill:#87CEEB,stroke:#4682B4,stroke-width:2px
-    style B fill:#B0C4DE
-    style C fill:#ADD8E6
-    style D fill:#F0E68C
-    style E fill:#DDA0DD
-    style F fill:#DDA0DD
-    style G fill:#FFD700,stroke:#FF8C00,stroke-width:3px
-    style H fill:#90EE90,stroke:#006400,stroke-width:2px
-    style I fill:#90EE90,stroke:#006400,stroke-width:2px
-    style J fill:#FFB6C1,stroke:#DC143C,stroke-width:3px
-    style K fill:#98FB98
-    style L fill:#FF6B6B,stroke:#DC143C,stroke-width:2px,color:#fff
-    style M fill:#FFA500
-    style N fill:#87CEEB,stroke:#4682B4,stroke-width:2px
-    style O fill:#90EE90
-```
 
 **Error Details:**
 ```
@@ -459,78 +353,6 @@ Summary for 512 parallel rollouts
 | **Humanoid** | 128 | 100 | 114,841 | 574.20x | 8.71 |
 | **Pendula** | 512 | 500 | 148,741 | 2,974.83x | 6.72 |
 
-```mermaid
-%%{init: {'theme':'base'}}%%
-graph TD
-    subgraph "Performance Metrics Comparison"
-        A[Benchmark Results<br/>Apple M4 Max CPU]
-
-        A --> B[Humanoid Model]
-        A --> C[Pendula Model]
-
-        B --> B1["Throughput:<br/>114,841 steps/s"]
-        B --> B2["Realtime Factor:<br/>574x"]
-        B --> B3["Latency:<br/>8.71 µs"]
-        B --> B4["Batch Size: 128"]
-
-        C --> C1["Throughput:<br/>148,741 steps/s"]
-        C --> C2["Realtime Factor:<br/>2,975x"]
-        C --> C3["Latency:<br/>6.72 µs"]
-        C --> C4["Batch Size: 512"]
-    end
-
-    style A fill:#87CEEB,stroke:#4682B4,stroke-width:3px
-    style B fill:#98FB98,stroke:#32CD32,stroke-width:2px
-    style C fill:#FFD700,stroke:#FFA500,stroke-width:2px
-    style B1 fill:#E0FFE0
-    style B2 fill:#E0FFE0
-    style B3 fill:#E0FFE0
-    style B4 fill:#E0FFE0
-    style C1 fill:#FFF8DC
-    style C2 fill:#FFF8DC
-    style C3 fill:#FFF8DC
-    style C4 fill:#FFF8DC
-```
-
-### Throughput Comparison Chart
-
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#87CEEB'}}}%%
-pie title "Steps Per Second Distribution"
-    "Humanoid (114,841)" : 114841
-    "Pendula (148,741)" : 148741
-```
-
-### Benchmark Execution Flow
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant Makefile
-    participant Python
-    participant JAX
-    participant XLA
-    participant CPU
-
-    User->>Makefile: make run_benchmark
-    Makefile->>Makefile: Set XLA_FLAGS
-    Makefile->>Makefile: Force JAX_PLATFORMS=cpu
-    Makefile->>Python: Execute testspeed.py
-    Python->>JAX: Import JAX (CPU only)
-    JAX->>XLA: Initialize XLA backend
-    XLA->>CPU: Detect CPU device
-    Python->>JAX: Load MuJoCo model
-    JAX->>XLA: JIT compile physics kernels
-    Note over XLA: Compilation: ~3-5s
-    Python->>JAX: Run simulation rollouts
-    JAX->>XLA: Execute compiled code
-    XLA->>CPU: Parallel batch execution
-    CPU->>XLA: Return results
-    XLA->>JAX: Aggregate results
-    JAX->>Python: Final statistics
-    Python->>Makefile: Exit with results
-    Makefile->>User: Save to timestamped log
-```
 
 **Key Observations:**
 - Pendula model achieves ~30% higher throughput due to simpler dynamics

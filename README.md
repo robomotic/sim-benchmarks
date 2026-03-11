@@ -49,7 +49,7 @@ A comprehensive benchmarking suite for evaluating the performance of various phy
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/sim-benchmarks.git
+git clone https://github.com/robomotic/sim-benchmarks.git
 cd sim-benchmarks
 
 # Install dependencies
@@ -170,64 +170,24 @@ Performance:
   ✓ Per-step latency: 6.72 µs
 ```
 
-#### Performance Comparison Chart
+#### Performance Comparison
 
-```mermaid
-%%{init: {'theme':'base'}}%%
-graph TD
-    subgraph "MJX Performance on Apple M4 Max (CPU)"
-        A[Benchmark Results<br/>Apple M4 Max CPU]
-
-        A --> B[Humanoid Model]
-        A --> C[Pendula Model]
-
-        B --> B1["Throughput:<br/>114,841 steps/s"]
-        B --> B2["Realtime Factor:<br/>574x"]
-        B --> B3["Latency:<br/>8.71 µs"]
-        B --> B4["Batch Size: 128"]
-
-        C --> C1["Throughput:<br/>148,741 steps/s"]
-        C --> C2["Realtime Factor:<br/>2,975x"]
-        C --> C3["Latency:<br/>6.72 µs"]
-        C --> C4["Batch Size: 512"]
-    end
-
-    style A fill:#87CEEB,stroke:#4682B4,stroke-width:3px
-    style B fill:#98FB98,stroke:#32CD32,stroke-width:2px
-    style C fill:#FFD700,stroke:#FFA500,stroke-width:2px
-    style B1 fill:#E0FFE0
-    style B2 fill:#E0FFE0
-    style B3 fill:#E0FFE0
-    style B4 fill:#E0FFE0
-    style C1 fill:#FFF8DC
-    style C2 fill:#FFF8DC
-    style C3 fill:#FFF8DC
-    style C4 fill:#FFF8DC
-```
+| Model | Batch Size | Throughput (steps/s) | Realtime Factor | Latency (µs) |
+|-------|------------|---------------------|-----------------|--------------|
+| **Humanoid** | 128 | 114,841 | 574x | 8.71 |
+| **Pendula** | 512 | 148,741 | 2,975x | 6.72 |
 
 #### Hardware Comparison & Price/Performance
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#87CEEB'}}}%%
-graph LR
-    subgraph "MJX Throughput Performance (Humanoid Model)"
-        A[Mac Mini M2<br/>~60K steps/s<br/>$599]
-        B[Mac Mini M4<br/>~70K steps/s<br/>$699]
-        C[Mac Mini M2 Pro<br/>~85K steps/s<br/>$1,299]
-        D[MacBook Pro M3 Pro<br/>~80K steps/s<br/>$1,999]
-        E[Mac Studio M2 Max<br/>~90K steps/s<br/>$1,999]
-        F[MacBook Pro M4 Max<br/>115K steps/s<br/>$3,499]
-        G[Mac Studio M2 Ultra<br/>~180K steps/s<br/>$3,999]
-    end
-
-    style A fill:#90EE90,stroke:#006400,stroke-width:2px
-    style B fill:#98FB98,stroke:#00FF00,stroke-width:3px
-    style C fill:#FFD700,stroke:#FF8C00,stroke-width:2px
-    style D fill:#87CEEB,stroke:#4682B4,stroke-width:2px
-    style E fill:#DDA0DD,stroke:#9370DB,stroke-width:2px
-    style F fill:#FF6B6B,stroke:#DC143C,stroke-width:3px
-    style G fill:#FFB6C1,stroke:#FF1493,stroke-width:2px
-```
+| System | Throughput (steps/s) | Price | Price/Performance | Recommendation |
+|--------|---------------------|-------|-------------------|----------------|
+| **Mac Mini M2** | ~60,000 | $599 | $0.010/ksteps | 🏆 Best value |
+| **Mac Mini M4** | ~70,000 | $699 | $0.010/ksteps | 🥇 Latest budget |
+| **Mac Mini M2 Pro** | ~85,000 | $1,299 | $0.015/ksteps | 🥈 Performance |
+| **MacBook Pro M3 Pro** | ~80,000 | $1,999 | $0.025/ksteps | Good |
+| **Mac Studio M2 Max** | ~90,000 | $1,999 | $0.022/ksteps | Good |
+| **MacBook Pro M4 Max** | 115,000 | $3,499 | $0.030/ksteps | 🎯 Development |
+| **Mac Studio M2 Ultra** | ~180,000 | $3,999 | $0.022/ksteps | High-end |
 
 #### Key Findings
 
@@ -254,7 +214,7 @@ graph LR
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/sim-benchmarks.git
+git clone https://github.com/robomotic/sim-benchmarks.git
 cd sim-benchmarks
 
 # Install dependencies
@@ -290,11 +250,11 @@ If you use this benchmarking suite in your research, please cite:
 
 ```bibtex
 @misc{sim-benchmarks,
-  author = {Your Name},
+  author = {Paolo Di Prodi},
   title = {Robotic Simulator Performance Benchmarks},
   year = {2026},
   publisher = {GitHub},
-  url = {https://github.com/yourusername/sim-benchmarks}
+  url = {https://github.com/robomotic/sim-benchmarks}
 }
 ```
 
@@ -307,7 +267,3 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 - Simulator developers and communities
 - Contributors to this benchmarking effort
 - Research institutions supporting this work
-
-## Contact
-
-For questions or collaboration inquiries, please open an issue or contact [your-email@example.com].
