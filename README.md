@@ -52,7 +52,20 @@ A pioneering project by Jonathon Selstad (`zalo`) that first brought MuJoCo to t
 - **Tech Stack:** Emscripten-based compilation of the MuJoCo C library for browser execution.
 - **Impact:** Served as the foundation for the community-led effort to make physics-based robotics accessible without native installs.
 
----
+### [RoboHive](https://github.com/robonet-hub/robohive)
+A unified ecosystem for robot learning that encompasses domains such as dexterous manipulation, legged locomotion, and musculoskeletal agents.
+- **Key Feature:** High physics fidelity and rich visual diversity with a streamlined task interface for sim-to-real transfer.
+
+
+### [Loco-MuJoCo](https://github.com/robfiras/loco-mujoco)
+A specialized imitation learning benchmark for complex locomotion and whole-body control.
+- **Key Feature:** Provides 22,000+ motion capture datasets (AMASS, LAFAN1) retargeted for 12 humanoid and 4 quadruped environments.
+
+
+
+### [ManiSkill3](https://github.com/haosulab/ManiSkill)
+A GPU-parallelized robotics simulation and rendering framework designed for **generalizable embodied AI**.
+- **Key Feature:** Focuses on object-level generalizability of manipulation skills using 3D visual inputs.
 
 ## 🛠️ Performance Accelerators & Integrations
 
@@ -87,17 +100,6 @@ While individual simulators provide environments, these projects provide standar
 A high-fidelity benchmarking framework designed to evaluate **robot generalists** (VLA policies) trained on real-world data.
 - **Key Feature:** Automatically converts real-world video demonstrations into simulated "digital twins" for rigorous, scalable assessment.
 
-### [Loco-MuJoCo](https://github.com/robfiras/loco-mujoco)
-A specialized imitation learning benchmark for complex locomotion and whole-body control.
-- **Key Feature:** Provides 22,000+ motion capture datasets (AMASS, LAFAN1) retargeted for 12 humanoid and 4 quadruped environments.
-
-### [ManiSkill3](https://github.com/haosulab/ManiSkill)
-A GPU-parallelized robotics simulation and rendering framework designed for **generalizable embodied AI**.
-- **Key Feature:** Focuses on object-level generalizability of manipulation skills using 3D visual inputs.
-
-### [RoboHive](https://github.com/robonet-hub/robohive)
-A unified ecosystem for robot learning that encompasses domains such as dexterous manipulation, legged locomotion, and musculoskeletal agents.
-- **Key Feature:** High physics fidelity and rich visual diversity with a streamlined task interface for sim-to-real transfer.
 
 ### [Meta-World](https://github.com/Farama-Foundation/Metaworld)
 A widely used benchmark for evaluating multi-task and meta-reinforcement learning agents.
