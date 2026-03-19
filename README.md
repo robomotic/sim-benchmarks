@@ -173,14 +173,3 @@ graph TD
     RoboHive --> MuJoCo
     MetaWorld --> MuJoCo
 ```
-
----
-
-### Contact & About the Author
-
-This analysis was developed by **Delanoe Pirard**. You can find more of his work and updates at the following links:
-
-- **X (formerly Twitter):** [@0xAedelon](https://x.com/0xAedelon)
-- **Medium / Blog:** [blog.delanoe-pirard.com](https://blog.delanoe-pirard.com/)
-
-
