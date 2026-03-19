@@ -47,34 +47,61 @@ An implementation of the **Isaac Lab API**, but powered by **MuJoCo-Warp**.
 The official implementation of **PAL Robotics** models (TALOS, TIAGo, etc.) within the `mjlab` framework.
 - **Use Case:** Sim-to-real reinforcement learning and motion imitation specifically for PAL Robotics hardware.
 
----
-
-## 🏆 Benchmarking & Evaluation
-
-### [RobotArena ∞ (RobotArena Infinity)](https://robotarenainf.github.io/)
-A high-fidelity benchmarking framework designed to evaluate **robot generalists** (VLA policies) trained on real-world data.
-- **Key Feature:** Automatically converts real-world video demonstrations into simulated "digital twins" for rigorous, scalable assessment.
-- **Methodology:** Combines VLM scoring with human preference judgments to benchmark how well policies generalize across perturbed environments.
-
-### [Loco-MuJoCo](https://github.com/robfiras/loco-mujoco)
-A specialized imitation learning benchmark for complex locomotion and whole-body control.
-- **Key Feature:** Provides 22,000+ motion capture datasets (AMASS, LAFAN1) retargeted for 12 humanoid and 4 quadruped environments.
-- **Methodology:** Supports both single-environment MuJoCo and parallelized training via **MJX** and **MuJoCo Warp**, with built-in metrics like dynamic time warping.
-
 ### [mujoco_wasm](https://github.com/zalo/mujoco_wasm)
 A pioneering project by Jonathon Selstad (`zalo`) that first brought MuJoCo to the web via **WebAssembly (WASM)**.
 - **Tech Stack:** Emscripten-based compilation of the MuJoCo C library for browser execution.
 - **Impact:** Served as the foundation for the community-led effort to make physics-based robotics accessible without native installs.
 
+---
+
+## 🛠️ Performance Accelerators & Integrations
+
 ### [MuJoCo Warp](https://github.com/google-deepmind/mujoco_warp)
-A collaborative project between **Google DeepMind** and **NVIDIA** that brings MuJoCo's physics to NVIDIA's **Warp** framework.
+A collaborative project between **Google DeepMind** and **NVIDIA** that brings MuJoCo's physics into the NVIDIA **Warp** framework.
 - **Strength:** High-throughput GPU acceleration using sparse matrix operations and speculative execution.
-- **Best for:** Massive-scale reinforcement learning (up to 475x faster than MJX for manipulation) and serving as the underlying solver for Newton.
+- **Best for:** Massive-scale reinforcement learning (up to 475x faster than MJX for manipulation).
 
 ### [mujoco-torch](https://github.com/vmoens/mujoco-torch)
 A PyTorch-native integration for MuJoCo, developed by **Vincent Moens** (maintainer of TorchRL and TensorDict).
 - **Strength:** Exposes MuJoCo's physical state and parameters directly as differentiable PyTorch tensors.
-- **Best for:** Researchers building end-to-end differentiable simulation pipelines within the PyTorch and TorchRL ecosystems.
+- **Best for:** Researchers building end-to-end differentiable simulation pipelines within the PyTorch ecosystem.
+
+## 📊 Quick Selection Guide
+
+| Criterion | [MuJoCo](COMPARISONS.md) | [Isaac Sim](COMPARISONS.md) | [Newton](NEWTON.md) |
+| --- | --- | --- | --- |
+| **Primary Backend** | CPU / TPU (MJX) | GPU (PhysX) | GPU (Warp) |
+| **Physics Accuracy** | Best (Linear) | Good | Best (SDF/Hydro) |
+| **Speed (RL)** | High (via MJX) | Extreme (GPU-native) | Extreme+ (Blackwell) |
+| **Rendering** | Functional | Photorealistic (RTX) | High (USD support) |
+| **Ease of Setup** | Seconds (`pip install`) | Minutes/Hours | Moderate |
+| **Hardware** | Anything (incl. RPi) | NVIDIA GPU (8GB+ VRAM) | NVIDIA GPU (Blackwell+) |
+
+---
+
+## 🏆 Benchmarking & Evaluation Suites
+
+While individual simulators provide environments, these projects provide standardized tasks and metrics to evaluate robot policy performance across diverse scenarios.
+
+### [RobotArena ∞ (RobotArena Infinity)](https://robotarenainf.github.io/)
+A high-fidelity benchmarking framework designed to evaluate **robot generalists** (VLA policies) trained on real-world data.
+- **Key Feature:** Automatically converts real-world video demonstrations into simulated "digital twins" for rigorous, scalable assessment.
+
+### [Loco-MuJoCo](https://github.com/robfiras/loco-mujoco)
+A specialized imitation learning benchmark for complex locomotion and whole-body control.
+- **Key Feature:** Provides 22,000+ motion capture datasets (AMASS, LAFAN1) retargeted for 12 humanoid and 4 quadruped environments.
+
+### [ManiSkill3](https://github.com/haosulab/ManiSkill)
+A GPU-parallelized robotics simulation and rendering framework designed for **generalizable embodied AI**.
+- **Key Feature:** Focuses on object-level generalizability of manipulation skills using 3D visual inputs.
+
+### [RoboHive](https://github.com/robonet-hub/robohive)
+A unified ecosystem for robot learning that encompasses domains such as dexterous manipulation, legged locomotion, and musculoskeletal agents.
+- **Key Feature:** High physics fidelity and rich visual diversity with a streamlined task interface for sim-to-real transfer.
+
+### [Meta-World](https://github.com/Farama-Foundation/Metaworld)
+A widely used benchmark for evaluating multi-task and meta-reinforcement learning agents.
+- **Key Feature:** Includes 50+ diverse robotic manipulation tasks on a Sawyer arm, requiring agents to master diverse skills simultaneously.
 
 ---
 
@@ -90,6 +117,7 @@ graph TD
         Warp[NVIDIA Warp]
         PyTorch[PyTorch]
         JAX[JAX / XLA]
+        PhysX[PhysX]
     end
 
     subgraph Accelerated_Research [Accelerated Research]
@@ -105,14 +133,17 @@ graph TD
         pal_mjlab[pal_mjlab]
     end
 
-    subgraph Evaluation_Frameworks [Evaluation & Benchmarking]
-        RobotArena[RobotArena ∞]
-        LocoMuJoCo[Loco-MuJoCo]
-    end
-
     subgraph Web_Interactive [Web & Interactive]
         mjwasm[mujoco_wasm]
         mjswan[mjswan]
+    end
+
+    subgraph Evaluation_Suites [Benchmarking & Evaluation]
+        RobotArena[RobotArena ∞]
+        LocoMuJoCo[Loco-MuJoCo]
+        ManiSkill[ManiSkill3]
+        RoboHive[RoboHive]
+        MetaWorld[Meta-World]
     end
 
     %% Dependencies
@@ -131,24 +162,25 @@ graph TD
     pal_mjlab --> mjlab
     mjwasm --> MuJoCo
     mjswan --> mjwasm
+    
+    %% Evaluation Mappings
     RobotArena -. evaluates .-> Newton
     RobotArena -. evaluates .-> IsaacLab
     LocoMuJoCo --> MuJoCo
     LocoMuJoCo --> MJX
-    LocoMuJoCo --> MJWarp
+    ManiSkill --> PhysX
+    ManiSkill --> PhysX
+    RoboHive --> MuJoCo
+    MetaWorld --> MuJoCo
 ```
 
 ---
 
-## 📊 Quick Selection Guide
+### Contact & About the Author
 
-| Criterion | [MuJoCo](COMPARISONS.md) | [Isaac Sim](COMPARISONS.md) | [Newton](NEWTON.md) |
-| --- | --- | --- | --- |
-| **Primary Backend** | CPU / TPU (MJX) | GPU (PhysX) | GPU (Warp) |
-| **Physics Accuracy** | Best (Linear) | Good | Best (SDF/Hydro) |
-| **Speed (RL)** | High (via MJX) | Extreme (GPU-native) | Extreme+ (Blackwell) |
-| **Rendering** | Functional | Photorealistic (RTX) | High (USD support) |
-| **Ease of Setup** | Seconds (`pip install`) | Minutes/Hours | Moderate |
-| **Hardware** | Anything (incl. RPi) | NVIDIA GPU (8GB+ VRAM) | NVIDIA GPU (Blackwell+) |
+This analysis was developed by **Delanoe Pirard**. You can find more of his work and updates at the following links:
+
+- **X (formerly Twitter):** [@0xAedelon](https://x.com/0xAedelon)
+- **Medium / Blog:** [blog.delanoe-pirard.com](https://blog.delanoe-pirard.com/)
 
 
