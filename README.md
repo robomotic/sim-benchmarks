@@ -43,6 +43,24 @@ A robust framework for creating interactive MuJoCo simulations. It enables real-
 An implementation of the **Isaac Lab API**, but powered by **MuJoCo-Warp**.
 - **Use Case:** Provides a bridge for researchers who want the familiar Isaac Lab API and workflow but prefer the underlying physics properties (or licensing/portability) of the MuJoCo/Warp ecosystem.
 
+#### [pal_mjlab](https://github.com/pal-robotics/pal_mjlab)
+The official implementation of **PAL Robotics** models (TALOS, TIAGo, etc.) within the `mjlab` framework.
+- **Use Case:** Sim-to-real reinforcement learning and motion imitation specifically for PAL Robotics hardware.
+
+---
+
+## 🏆 Benchmarking & Evaluation
+
+### [RobotArena ∞ (RobotArena Infinity)](https://robotarenainf.github.io/)
+A high-fidelity benchmarking framework designed to evaluate **robot generalists** (VLA policies) trained on real-world data.
+- **Key Feature:** Automatically converts real-world video demonstrations into simulated "digital twins" for rigorous, scalable assessment.
+- **Methodology:** Combines VLM scoring with human preference judgments to benchmark how well policies generalize across perturbed environments.
+
+### [Loco-MuJoCo](https://github.com/robfiras/loco-mujoco)
+A specialized imitation learning benchmark for complex locomotion and whole-body control.
+- **Key Feature:** Provides 22,000+ motion capture datasets (AMASS, LAFAN1) retargeted for 12 humanoid and 4 quadruped environments.
+- **Methodology:** Supports both single-environment MuJoCo and parallelized training via **MJX** and **MuJoCo Warp**, with built-in metrics like dynamic time warping.
+
 ### [mujoco_wasm](https://github.com/zalo/mujoco_wasm)
 A pioneering project by Jonathon Selstad (`zalo`) that first brought MuJoCo to the web via **WebAssembly (WASM)**.
 - **Tech Stack:** Emscripten-based compilation of the MuJoCo C library for browser execution.
@@ -84,6 +102,12 @@ graph TD
     subgraph Consolidated_Ecosystem [Consolidated Ecosystem]
         Newton[Newton 1.0]
         mjlab[mjlab]
+        pal_mjlab[pal_mjlab]
+    end
+
+    subgraph Evaluation_Frameworks [Evaluation & Benchmarking]
+        RobotArena[RobotArena ∞]
+        LocoMuJoCo[Loco-MuJoCo]
     end
 
     subgraph Web_Interactive [Web & Interactive]
@@ -104,8 +128,14 @@ graph TD
     Newton --> Warp
     mjlab --> IsaacLab
     mjlab --> MJWarp
+    pal_mjlab --> mjlab
     mjwasm --> MuJoCo
     mjswan --> mjwasm
+    RobotArena -. evaluates .-> Newton
+    RobotArena -. evaluates .-> IsaacLab
+    LocoMuJoCo --> MuJoCo
+    LocoMuJoCo --> MJX
+    LocoMuJoCo --> MJWarp
 ```
 
 ---
