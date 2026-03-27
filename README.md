@@ -45,6 +45,12 @@ A high-performance web-based MuJoCo viewer powered by **Viser**.
 - **Key Feature:** Provides the familiarity of the native MuJoCo viewer (sliders, contact/force viz, camera tracking) but accessible via a web URL.
 - **Best for:** Remote visualization, cloud-based simulation environments, and interactive Python-driven MuJoCo experiments.
 
+### [mujoco-scene-editor](https://github.com/markusgrotz/mujoco-scene-editor)
+A lightweight, interactive scene editor for MuJoCo 3.x.
+- **Key Feature:** Allows interactive placement of shapes, mesh imports, and robot additions directly in the browser with drag-and-drop gizmos.
+- **AI Integration:** Includes `mjprompt` for generating entire MuJoCo MJCF scenes from natural language prompts.
+- **Use Case:** Rapid prototyping of simulation environments and AI-assisted scene generation.
+
 ### [mjlab](https://github.com/mujocolab/mjlab)
 An implementation of the **Isaac Lab API**, but powered by **MuJoCo-Warp**.
 - **Use Case:** Provides a bridge for researchers who want the familiar Isaac Lab API and workflow but prefer the underlying physics properties (or licensing/portability) of the MuJoCo/Warp ecosystem.
@@ -145,6 +151,7 @@ graph TD
         mjwasm[mujoco_wasm]
         mjswan[mjswan]
         mjviser[mjviser]
+        mjscene[mujoco-scene-editor]
     end
 
     subgraph Evaluation_Suites [Benchmarking & Evaluation]
@@ -172,6 +179,7 @@ graph TD
     mjwasm --> MuJoCo
     mjswan --> mjwasm
     mjviser --> MuJoCo
+    mjscene --> MuJoCo
     
     %% Evaluation Mappings
     RobotArena -. evaluates .-> Newton
