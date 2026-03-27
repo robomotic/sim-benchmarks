@@ -39,6 +39,12 @@ A robust framework for creating interactive MuJoCo simulations. It enables real-
 - **Tech Stack:** Utilizes `mujoco_wasm`, ONNX Runtime, and `three.js`.
 - **Use Case:** Sharing AI robot demonstrations as static websites (e.g., via GitHub Pages).
 
+### [mjviser](https://github.com/mujocolab/mjviser)
+A high-performance web-based MuJoCo viewer powered by **Viser**.
+- **Tech Stack:** Python-native simulation with a [Viser](https://viser.studio) 3D backend for the browser.
+- **Key Feature:** Provides the familiarity of the native MuJoCo viewer (sliders, contact/force viz, camera tracking) but accessible via a web URL.
+- **Best for:** Remote visualization, cloud-based simulation environments, and interactive Python-driven MuJoCo experiments.
+
 ### [mjlab](https://github.com/mujocolab/mjlab)
 An implementation of the **Isaac Lab API**, but powered by **MuJoCo-Warp**.
 - **Use Case:** Provides a bridge for researchers who want the familiar Isaac Lab API and workflow but prefer the underlying physics properties (or licensing/portability) of the MuJoCo/Warp ecosystem.
@@ -138,6 +144,7 @@ graph TD
     subgraph Web_Interactive [Web & Interactive]
         mjwasm[mujoco_wasm]
         mjswan[mjswan]
+        mjviser[mjviser]
     end
 
     subgraph Evaluation_Suites [Benchmarking & Evaluation]
@@ -164,6 +171,7 @@ graph TD
     pal_mjlab --> mjlab
     mjwasm --> MuJoCo
     mjswan --> mjwasm
+    mjviser --> MuJoCo
     
     %% Evaluation Mappings
     RobotArena -. evaluates .-> Newton
