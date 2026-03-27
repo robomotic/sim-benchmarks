@@ -51,6 +51,12 @@ A lightweight, interactive scene editor for MuJoCo 3.x.
 - **AI Integration:** Includes `mjprompt` for generating entire MuJoCo MJCF scenes from natural language prompts.
 - **Use Case:** Rapid prototyping of simulation environments and AI-assisted scene generation.
 
+### [MuJoCo-GS-Web](https://vector-wangel.github.io/MuJoCo-GS-Web/)
+A high-fidelity rendering bridge that integrates MuJoCo physics with **3D Gaussian Splatting (3DGS)**.
+- **Key Feature:** Allows importing any robot (MJCF) into photorealistic 3DGS scenes with correct occlusion and interaction.
+- **Control:** Supports end-effector teleop for models like Franka and XLeRobot, and runs pretrained RL policies.
+- **Impact:** Enables "Simulation-as-a-Website" with photorealism that works on mobile devices thanks to pure WASM execution.
+
 ### [mjlab](https://github.com/mujocolab/mjlab)
 An implementation of the **Isaac Lab API**, but powered by **MuJoCo-Warp**.
 - **Use Case:** Provides a bridge for researchers who want the familiar Isaac Lab API and workflow but prefer the underlying physics properties (or licensing/portability) of the MuJoCo/Warp ecosystem.
@@ -152,6 +158,7 @@ graph TD
         mjswan[mjswan]
         mjviser[mjviser]
         mjscene[mujoco-scene-editor]
+        mjgs[MuJoCo-GS-Web]
     end
 
     subgraph Evaluation_Suites [Benchmarking & Evaluation]
@@ -180,6 +187,8 @@ graph TD
     mjswan --> mjwasm
     mjviser --> MuJoCo
     mjscene --> MuJoCo
+    mjgs --> mjwasm
+    mjgs --> MuJoCo
     
     %% Evaluation Mappings
     RobotArena -. evaluates .-> Newton
