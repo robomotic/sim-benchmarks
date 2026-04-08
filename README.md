@@ -111,6 +111,11 @@ A PyTorch-native integration for MuJoCo, developed by **Vincent Moens** (maintai
 - **Strength:** Exposes MuJoCo's physical state and parameters directly as differentiable PyTorch tensors.
 - **Best for:** Researchers building end-to-end differentiable simulation pipelines within the PyTorch ecosystem.
 
+### [URLab (Unreal Robotics Lab)](https://github.com/URLab-Sim/UnrealRoboticsLab)
+An Unreal Engine 5 plugin that embeds the MuJoCo physics engine directly into the editor and runtime.
+- **Key Feature:** Drag-and-drop MJCF XML import, a component-based architecture that maps 1:1 to MuJoCo elements, and the full MuJoCo C API accessible from C++ and Blueprints.
+- **Best for:** Combining the academic gold standard of MuJoCo physics with the photorealism and powerful tooling of Unreal Engine 5 via ZMQ networking, Python policy integration, and rich sensor support.
+
 ## 📊 Quick Selection Guide
 
 | Criterion | [MuJoCo](COMPARISONS.md) | [Isaac Sim](COMPARISONS.md) | [Newton](NEWTON.md) |
