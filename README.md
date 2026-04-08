@@ -34,6 +34,11 @@ A specialized deep-dive into running MJX on macOS. While Metal GPU acceleration 
 
 Recent advancements have allowed high-fidelity physics to run directly in the browser, enabling "Simulation-as-a-Website."
 
+### [Robot Explorer](https://ferrolho.github.io/robot-explorer/)
+An interactive 3D web application for visualizing and manipulating robot models directly in the browser.
+- **Key Feature:** Allows real-time visualization of robot kinematics, manipulability ellipsoids, and joint controls.
+- **Use Case:** Instantly visualizing and inspecting robot models without needing a local simulation environment.
+
 ### [OORB Studio](https://oorb.io/)
 A cloud robotics workspace for building, testing, and iterating on ROS projects directly in the browser.
 - **Key Feature:** Built-in collaboration and agentic tools for rapid robotic software development.
