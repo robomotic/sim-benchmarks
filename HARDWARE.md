@@ -17,3 +17,18 @@ A practical, low-cost (~$660) dual-arm mobile robot design for general household
 ### Resources
 - [Documentation](https://xlerobot.readthedocs.io/en/latest/index.html)
 - [GitHub Repository](https://github.com/Vector-Wangel/XLeRobot)
+
+---
+
+## [ASTORINO](https://astorino.com.pl/en/)
+A 6-axis educational industrial robot designed for vocational schools and technical universities, manufactured by ASTOR (Kawasaki Robotics CEE Hub).
+
+### Key Features
+- **Industry-Standard Learning**: Programmed exactly like real Kawasaki Robotics industrial robots, providing direct and highly transferable career skills for students.
+- **3D Printed Foundation**: 99% of the structural components are 3D printed (using popular PET-G filament). STL files are supplied with the robot so parts can be self-repaired or reprinted.
+- **Safe & Didactic Design**: Features built-in brakes on the 2nd and 3rd axes (fall protection), collision detection, and a safe payload envelope suitable for student labs.
+- **Expandable Modularity**: Integrated with an internal microcontroller, accepting external 24V I/O modules, vision systems, cube feeders, various grippers, and even a 7th axis rail.
+- **Ecosystem Formats**: Ranges from bare robot configurations to "Station PRO" setups featuring dedicated worktables and pneumatic grippers.
+
+### Resources
+- [Product Website](https://astorino.com.pl/en/)
