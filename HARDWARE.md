@@ -32,3 +32,15 @@ A 6-axis educational industrial robot designed for vocational schools and techni
 
 ### Resources
 - [Product Website](https://astorino.com.pl/en/)
+
+---
+
+## [Universal Manipulation Interface (UMI)](https://umi-gripper.github.io/)
+We present Universal Manipulation Interface (UMI) -- a data collection and policy learning framework that allows direct skill transfer from in-the-wild human demonstrations to deployable robot policies. UMI employs hand-held grippers coupled with careful interface design to enable portable, low-cost, and information-rich data collection for challenging bimanual and dynamic manipulation demonstrations.
+
+To facilitate deployable policy learning, UMI incorporates a carefully designed policy interface with inference-time latency matching and a relative-trajectory action representation. The resulting learned policies are hardware-agnostic and deployable across multiple robot platforms.
+
+Equipped with these features, the UMI framework unlocks new robot manipulation capabilities, allowing zero-shot generalizable dynamic, bimanual, precise, and long-horizon behaviors, by only changing the training data for each task. We demonstrate UMI’s versatility and efficacy with comprehensive real-world experiments, where policies learned via UMI zero-shot generalize to novel environments and objects when trained on diverse human demonstrations.
+
+**Video Demonstration:**
+https://umi-gripper.github.io/videos/teaser_data_collection_dish.mp4
