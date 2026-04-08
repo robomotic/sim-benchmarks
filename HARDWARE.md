@@ -35,6 +35,21 @@ A 6-axis educational industrial robot designed for vocational schools and techni
 
 ---
 
+## [Generalists Gloves](https://www.forbes.com/sites/annatong/2026/04/02/generalist-is-betting-its-robot-training-gloves-will-usher-in-robotics-chatgpt-moment/)
+There’s one thing on which nearly everyone in robotics agrees: data collection is a fundamental bottleneck. Large language models can train on the vast corpus of the internet. Robots can’t. There’s no Wikipedia for physical labor, you can’t scrape “if the toy doesn’t slip into the bag, try shaking it.”
+
+The most common workaround is teleoperation: bulky rigs that lets humans remotely control robotic systems to generate training examples. Rival Physical Intelligence is leaning heavily on that approach, building staged environments like kitchens and bedrooms for training. It’s even rented local Airbnbs to practice in real-world settings.
+
+Generalist believes it has found a more scalable alternative.
+
+Years before Generalist existed, cofounder Zeng was walking in Newport Beach when he noticed someone picking up trash with a simple grabber tool. It was an ‘aha’ moment for Zeng, who wondered if a tool like that could be used to generate the data to train those robot pincers mentioned above.
+
+The result of that idea is what Generalist calls “data hands”: strap-on devices worn on the wrists that effectively turn a person’s hands into pincer-like robot hands, collecting visual and sensory data. Generalist declined to explain what exactly is collected and how it's processed, but claims it's intuitive enough to be used in homes, warehouses, and workplaces to perform everyday tasks.
+
+At Generalist’s offices in San Mateo, “data hands” operators work side-by-side with researchers, practicing tasks like bundling together a bouquet of flowers, or futzing around with electronics.
+
+
+
 ## [Universal Manipulation Interface (UMI)](https://umi-gripper.github.io/)
 We present Universal Manipulation Interface (UMI) -- a data collection and policy learning framework that allows direct skill transfer from in-the-wild human demonstrations to deployable robot policies. UMI employs hand-held grippers coupled with careful interface design to enable portable, low-cost, and information-rich data collection for challenging bimanual and dynamic manipulation demonstrations.
 
