@@ -34,6 +34,11 @@ A specialized deep-dive into running MJX on macOS. While Metal GPU acceleration 
 
 Recent advancements have allowed high-fidelity physics to run directly in the browser, enabling "Simulation-as-a-Website."
 
+### [OORB Studio](https://oorb.io/)
+A cloud robotics workspace for building, testing, and iterating on ROS projects directly in the browser.
+- **Key Feature:** Built-in collaboration and agentic tools for rapid robotic software development.
+- **Use Case:** Remote web-based ROS development without local environment setup.
+
 ### [mjswan](https://github.com/ttktjmt/mjswan)
 A robust framework for creating interactive MuJoCo simulations. It enables real-time policy control directly in the web browser.
 - **Tech Stack:** Utilizes `mujoco_wasm`, ONNX Runtime, and `three.js`.
@@ -64,6 +69,10 @@ An implementation of the **Isaac Lab API**, but powered by **MuJoCo-Warp**.
 #### [pal_mjlab](https://github.com/pal-robotics/pal_mjlab)
 The official implementation of **PAL Robotics** models (TALOS, TIAGo, etc.) within the `mjlab` framework.
 - **Use Case:** Sim-to-real reinforcement learning and motion imitation specifically for PAL Robotics hardware.
+
+#### [twist2_mjlab](https://github.com/lzyang2000/twist2_mjlab)
+A standalone MJLab task package for **Unitree G1** motion tracking based on the **TWIST2** dataset.
+- **Use Case:** Enables reinforcement learning and motion tracking for humanoid robots using `mjwarp` by training from enriched PKL motion data.
 
 ### [mujoco_wasm](https://github.com/zalo/mujoco_wasm)
 A pioneering project by Jonathon Selstad (`zalo`) that first brought MuJoCo to the web via **WebAssembly (WASM)**.
@@ -151,9 +160,11 @@ graph TD
         Newton[Newton 1.0]
         mjlab[mjlab]
         pal_mjlab[pal_mjlab]
+        twist2_mjlab[twist2_mjlab]
     end
 
     subgraph Web_Interactive [Web & Interactive]
+        OORB[OORB Studio]
         mjwasm[mujoco_wasm]
         mjswan[mjswan]
         mjviser[mjviser]
@@ -183,6 +194,7 @@ graph TD
     mjlab --> IsaacLab
     mjlab --> MJWarp
     pal_mjlab --> mjlab
+    twist2_mjlab --> mjlab
     mjwasm --> MuJoCo
     mjswan --> mjwasm
     mjviser --> MuJoCo
