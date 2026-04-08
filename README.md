@@ -132,6 +132,22 @@ A high-fidelity benchmarking framework designed to evaluate **robot generalists*
 A widely used benchmark for evaluating multi-task and meta-reinforcement learning agents.
 - **Key Feature:** Includes 50+ diverse robotic manipulation tasks on a Sawyer arm, requiring agents to master diverse skills simultaneously.
 
+### Egocentric Datasets
+A collection of large-scale, first-person datasets crucial for training generalized visual-motor policies.
+- **[Ego4D](https://ego4d-data.org/)**
+- **[Egocentric-10K](https://huggingface.co/datasets/builddotai/Egocentric-10K)**
+- **[EPIC-KITCHENS](https://epic-kitchens.github.io/)**
+
+![Real World Egocentric Datasets Comparison](assets/egocentric_datasets.png)
+
+*(Hand % and active manipulation % based on 10,000 frame random sample)*
+
+| Dataset | Hours | Participants | 2 Hand % | 1+ Hand % | Active Manipulation % |
+| --- | --- | --- | --- | --- | --- |
+| **Egocentric-10K** | 10,000 | 2,138 | 76.34 | 96.42 | 91.66 |
+| **Ego4D** | 3,670 | 931 | 36.95 | 67.33 | 50.07 |
+| **EPIC-KITCHENS** | 100 | 40 | 61.05 | 90.37 | 85.04 |
+
 ---
 
 ## 📊 Ecosystem Dependency Graph
