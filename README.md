@@ -155,6 +155,13 @@ A collection of large-scale, first-person datasets crucial for training generali
 
 ---
 
+## 🛡️ Robot Safety & Control
+
+### [PRISM: Humanoid Stoppability](https://intelligent-control-lab.github.io/humanoid_stoppability/)
+Humanoid emergency stops cannot simply cut power. PRISM learns a runtime monitor that predicts whether a fixed fallback controller can still drive the robot to a minimum-risk condition from the current state, and it refines that boundary efficiently with targeted importance sampling.
+
+---
+
 ## 📊 Ecosystem Dependency Graph
 
 The following chart visualizes how these projects relate to and depend on each other.
