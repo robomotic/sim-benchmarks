@@ -159,16 +159,22 @@ Where does a CAD engineer building a robot from scratch spend most of their time
 
 ### 5.1 Typical Time Allocation
 
-```mermaid
-pie title "Time Distribution: CAD → Sim-Ready Robot"
-    "Mechanical CAD Design" : 25
-    "Geometry Cleanup & Defeaturing" : 20
-    "Inertial & Mass Properties" : 10
-    "Joint/Actuator Definition" : 15
-    "Collision Mesh Preparation" : 15
-    "Simulation Tuning & Validation" : 10
-    "Documentation & Format Conversion" : 5
-```
+> **Time Distribution: CAD → Sim-Ready Robot**
+ 
+ ```mermaid
+-pie title "Time Distribution: CAD → Sim-Ready Robot"
++pie showData
+     "Mechanical CAD Design" : 25
+     "Geometry Cleanup & Defeaturing" : 20
+-    "Inertial & Mass Properties" : 10
++    "Link Physics (Mass/Inertia)" : 10
+     "Joint/Actuator Definition" : 15
+-    "Collision Mesh Preparation" : 15
++    "Collision Mesh Prep" : 15
+     "Simulation Tuning & Validation" : 10
+-    "Documentation & Format Conversion" : 5
++    "Format Conversion" : 5
+ ```
 
 ### 5.2 Detailed Breakdown
 
