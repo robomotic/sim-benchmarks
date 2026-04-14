@@ -297,7 +297,7 @@ graph TD
 - Measure **real joint friction curves** (static + Coulomb + viscous).
 - Characterise **actuator latency** (command-to-torque delay, typically 1–10ms).
 - Record **motor torque-speed curves** at multiple operating points.
-- Use **Bayesian optimisation** or **Gaussian Processes** to fit simulation parameters to match real trajectories.
+- Use tools like the [MuJoCo System Identification (sysid) package](https://github.com/google-deepmind/mujoco/blob/main/python/mujoco/sysid/README.md), **Bayesian optimisation**, or **Gaussian Processes** to fit simulation parameters to match real trajectories.
 - Validate: drop the real robot from the same initial configuration and compare the simulated vs. real trajectory.
 
 #### Phase 4: Robust Training
@@ -352,3 +352,4 @@ graph TD
 - NVIDIA Isaac Sim URDF Import: [docs.isaacsim.omniverse.nvidia.com](https://docs.isaacsim.omniverse.nvidia.com)
 - Tobin et al. (2017): *Domain Randomisation for Transferring Deep Neural Networks from Simulation to the Real World*, IROS.
 - Ramos et al. (2019): *BayesSim: Adaptive Domain Randomisation via Probabilistic Inference*, RSS.
+- MuJoCo System Identification: [github.com/google-deepmind/mujoco/sysid](https://github.com/google-deepmind/mujoco/blob/main/python/mujoco/sysid/README.md)
