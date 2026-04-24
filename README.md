@@ -62,13 +62,18 @@ A lightweight, interactive scene editor for MuJoCo 3.x.
 - **Use Case:** Rapid prototyping of simulation environments and AI-assisted scene generation.
 
 ### [world-gen](https://github.com/ZiYang-xie/WorldGen)
-
 🌏 WorldGen can generate 3D scenes in seconds from text prompts and images. It is a powerful tool for creating 3D environments and scenes for games, simulations, robotics, and virtual reality applications.
+- **Instant 3D Generation** ⚡️ : Create full 3D scenes from input data in seconds.
+- **360° Free Exploration** 🧭 : Supports free 360° consistent exploration of the generated 3D scene with loop closure.
+- **Diverse Scene Support** 🌈 : Supports both indoor and outdoor scenes in any style.
+- **Flexible Rendering** 📸 : Supports rendering at any resolution with any camera setting in real-time.
 
-- Instant 3D Generation ⚡️ : Create full 3D scenes from input data in seconds
-- 360° Free Exploration 🧭 : WorldGen supports free 360° consistent exploration of the generated 3D scene with loop closure.
-- Diverse Scenes Support 🌈 : WorldGen supports both indoor and outdoor scenes, both realistic and unrealistic scenes in any style.
-- Flexible Rendering 📸 : WorldGen supports rendering at any resolution with any camera setting and trajectory in real-time.
+### [WorldGrow](https://github.com/world-grow/WorldGrow)
+🌐 WorldGrow is a hierarchical framework for generating infinite, open-ended 3D worlds. (AAAI 2026 Oral).
+- **Infinite Generation** ♾️ : Progressively grows large, continuous environments from a single seed block.
+- **Hierarchical Synthesis** 🏗️ : Uses a coarse-to-fine strategy to ensure global layout plausibility and local textural fidelity.
+- **Block Inpainting** 🧱 : Incorporates 3D block inpainting for context-aware, spatially coherent scene extension.
+- **Walkable Environments** 🚶 : Generates high-quality, reconstructed meshes (GLB) and 3DGS point clouds (PLY) suitable for navigation.
 
 ### [MuJoCo-GS-Web](https://vector-wangel.github.io/MuJoCo-GS-Web/)
 A high-fidelity rendering bridge that integrates MuJoCo physics with **3D Gaussian Splatting (3DGS)**.
@@ -212,6 +217,8 @@ graph TD
         mjviser[mjviser]
         mjscene[mujoco-scene-editor]
         mjgs[MuJoCo-GS-Web]
+        worldgen[WorldGen]
+        worldgrow[WorldGrow]
     end
 
     subgraph Evaluation_Suites [Benchmarking & Evaluation]
