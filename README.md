@@ -28,6 +28,12 @@ A specialized deep-dive into running MJX on macOS. While Metal GPU acceleration 
 - **M4 Max Performance:** Achieves **114,841 steps/second** (574x realtime) for humanoid models.
 - **Best Value:** Mac Mini M2/M4 offers the best price-per-kstep for budget-conscious researchers.
 
+### [MuJoCo on AMD Instinct (ROCm)](mjx/rocm/)
+MJX under JAX on ROCm, measured on an **AMD Instinct MI355X (gfx950)** rented as a DigitalOcean GPU Droplet. MJX is the *only* MuJoCo stack that runs on AMD: MuJoCo Warp, and therefore mjlab, emit CUDA SIMT kernels with no ROCm backend.
+- **MI355X Performance:** **106,837 steps/second** (534x realtime) for humanoid at batch 16,384, still rising at the largest batch measured.
+- **Not comparable to the Apple Silicon figure above:** that is measured at batch 128, this at batch 16,384. Different operating points, not a head-to-head.
+- **Cost Reality:** MI355X is spot-only at $4.50/hr, and new DigitalOcean accounts are capped at *zero* GPU Droplets until a tier increase. See [LESSONS.md](mjx/rocm/LESSONS.md).
+
 ---
 
 ## 🌐 Web & Interactive Ecosystem

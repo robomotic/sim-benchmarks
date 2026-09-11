@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "device_kind": "AMD Instinct MI355X VF",
+    "platform": "gpu",
+    "jax_version": "0.10.0",
+    "mujoco_version": "3.13.0",
+    "host": "Linux-6.8.0-137-generic-x86_64-with-glibc2.39"
+  },
+  "results": [
+    {
+      "batch_size": 1024,
+      "n_steps": 1000,
+      "compile_and_warmup_s": 19.489,
+      "wall_s": 27.9455,
+      "steps_per_sec": 36642.8,
+      "sim_seconds_per_wall_sec": 183.21
+    },
+    {
+      "batch_size": 2048,
+      "n_steps": 1000,
+      "compile_and_warmup_s": 18.127,
+      "wall_s": 39.8916,
+      "steps_per_sec": 51339.2,
+      "sim_seconds_per_wall_sec": 256.7
+    },
+    {
+      "batch_size": 4096,
+      "n_steps": 1000,
+      "compile_and_warmup_s": 19.785,
+      "wall_s": 65.0196,
+      "steps_per_sec": 62996.4,
+      "sim_seconds_per_wall_sec": 314.98
+    },
+    {
+      "batch_size": 8192,
+      "n_steps": 1000,
+      "compile_and_warmup_s": 26.816,
+      "wall_s": 100.5209,
+      "steps_per_sec": 81495.5,
+      "sim_seconds_per_wall_sec": 407.48
+    },
+    {
+      "batch_size": 16384,
+      "n_steps": 1000,
+      "compile_and_warmup_s": 23.014,
+      "wall_s": 153.3546,
+      "steps_per_sec": 106837.3,
+      "sim_seconds_per_wall_sec": 534.19
+    }
+  ]
+}

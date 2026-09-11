@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "device_kind": "AMD Instinct MI355X VF",
+    "platform": "gpu",
+    "jax_version": "0.10.0",
+    "mujoco_version": "3.13.0",
+    "host": "Linux-6.8.0-137-generic-x86_64-with-glibc2.39"
+  },
+  "results": [
+    {
+      "batch_size": 1024,
+      "n_steps": 200,
+      "compile_and_warmup_s": 20.032,
+      "wall_s": 16.9321,
+      "steps_per_sec": 12095.3,
+      "sim_seconds_per_wall_sec": 60.48
+    }
+  ]
+}
